@@ -39,7 +39,9 @@ class TweetViewController: UIViewController, UITextViewDelegate {
     @IBAction func tweet(_ sender: Any) {
         if (!tweetTextView.text.isEmpty) {
             TwitterAPICaller.client?.postTweet(tweetString: tweetTextView.text, success: {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: {
+                print("tweeted")
+                })
             }, failure: { (error) in
                 print("Error posting tweet \(error)")
                 self.dismiss(animated: true, completion: nil)
